@@ -14,7 +14,6 @@ body {
   flex-flow: column wrap;
   height: 100svh;
   gap: 50px;
-  padding: 0px 300px;
   margin: 0;
 }
 
@@ -24,6 +23,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 50px;
+}
+
+#padding-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0px 300px;
 }
 
 #heading, #footer, .option, .choice-text-container, 
@@ -54,6 +60,8 @@ body {
   background-color: white;
   font-size: 0.8em;
   border-radius: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 #choice-container{
