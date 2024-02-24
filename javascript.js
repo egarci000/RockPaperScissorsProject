@@ -6,51 +6,61 @@ function getComputerChoice(){
 
 let computerScore = 0;
 let playerScore = 0;
-let roundsPlayed = 0;
+let keepPlaying = true;
 
-function playGame(){
-  let askPlayerChoice = prompt("What is your choice? ", "").toLowerCase();
-  let getComputerChoiceVar = getComputerChoice();
-  let wonMessage = `You have beat the computer in 5 rounds with a score of ${playerScore} while the computer had ${computerScore}`;
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach((btn) => btn.addEventListener("click", function(){
+  const results = document.querySelector("#end-message-container");
+  const userScore = document.querySelector("#user-score");
+  const computerScoreText = document.querySelector("#computer-score");
+  const userChoiceImage = document.querySelector("#user-choice-image");
+  const computerChoiceImage = document.querySelector("#computer-choice-image");
+
+  let computerChoiceVar = getComputerChoice();
+  let userChoice = btn.value;
+  let endMessage = document.createElement("p");
+  endMessage.id = "end-message";
   
-
-  function playRound(playerSelection, computerSelection){
-    roundsPlayed += 1;
-    if(playerSelection !== "rock" && 
-    playerSelection !== "scissors" &&
-    playerSelection !== "paper"){
-      console.log("Please enter rock, paper, or scissors!");
-    }
-    if((playerSelection === "rock" && computerSelection === "scissors" ) ||(playerSelection === "paper" && computerSelection === "rock") || 
-    (playerSelection === "scissors" && computerSelection === "paper")){
+  if(keepPlaying){
+    if((userChoice === "rock" && computerChoiceVar === "scissors" ) ||(userChoice === "paper" && computerChoiceVar === "rock") || 
+    (userChoice === "scissors" && computerChoiceVar === "paper")){
       playerScore += 1;
     } else if(
-      (computerSelection === "rock" && playerSelection === "scissors" ) ||
-    (computerSelection === "paper" && playerSelection === "rock") || 
-    (computerSelection === "scissors" && playerSelection === "paper")){
+      (computerChoiceVar === "rock" && userChoice === "scissors" ) ||
+    (computerChoiceVar === "paper" && userChoice === "rock") || 
+    (computerChoiceVar === "scissors" && userChoice === "paper")){
       computerScore += 1;
+    } else {}
+
+    if(btn.value === "rock"){
+      userChoiceImage.src = "images/rockImg.png";
+    } else if(btn.value === "paper"){
+      userChoiceImage.src = "images/paperImg.png";
+    } else {
+      userChoiceImage.src = "images/scissorsImg.png";
     }
-  }
-
-  playRound(askPlayerChoice, getComputerChoiceVar);
-
-  let roundMessage = `Round ${roundsPlayed}: User: ${askPlayerChoice}, Computer: ${getComputerChoiceVar}. User score: ${playerScore}, ${computerScore}`;
-  console.log(roundMessage);
-
-  if(roundsPlayed === 5){
-    if(playerScore > computerScore){
-      console.log(wonMessage);
-    } else if(computerScore > playerScore){
-      console.log(`You have lost :( The computer beat you with a score of ${computerScore} while you had ${playerScore}`);
-    } else{
-      console.log(`You have tied with the computer`);
+  
+    if(computerChoiceVar === "rock"){
+      computerChoiceImage.src = "images/rockImg.png";
+    } else if(computerChoiceVar === "paper"){
+      computerChoiceImage.src = "images/paperImg.png";
+    } else {
+      computerChoiceImage.src = "images/scissorsImg.png";
     }
+  
+
+    if(playerScore === 5){
+      endMessage.textContent = "Congrats you won!";
+      results.appendChild(endMessage);
+      keepPlaying = false;
+    } else if(computerScore === 5){
+      endMessage.textContent = "Oh no, you lost to the computer :(";
+      results.appendChild(endMessage);
+      keepPlaying = false;
+    }
+    userScore.textContent = `User Score: ${playerScore}`;
+    computerScoreText.textContent = `Computer Score: ${computerScore}`;
   }
-
-}
-
-for(let i = 0; i < 5; i++){
-  playGame();
-}
-
+}));
 

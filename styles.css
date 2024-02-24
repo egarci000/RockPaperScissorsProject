@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  display: flex;
+  flex-flow: column wrap;
+  height: 100svh;
+  gap: 50px;
+  padding: 0px 300px;
+  margin: 0;
+}
+
+#heading {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+#heading, #footer, .option, .choice-text-container, 
+#score-container, #end-message-container {
+  background-color: #403f45;
+  color: white;
+}
+
+#heading h1 {
+  font-size: 1.8em;
+}
+
+#options {
+  justify-content: center;
+  display: flex;
+  gap: 100px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+#options button {
+  background-color: white;
+  font-size: 0.8em;
+  border-radius: 50px;
+}
+
+#choice-container{
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+#user-choice-container, #computer-choice-container {
+  display: flex;
+  gap: 20px;
+}
+
+.choice-text-container{
+  width: 200px;
+  text-align: center;
+}
+
+#user-choice-image, #computer-choice-image {
+  width: 70px;
+  height: 70px;
+  outline: none;
+}
+
+.img-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#score-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 100px;
+  height: 75px;
+}
+
+#score-container p {
+  font-size: 1.5em;
+}
+
+#footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+#footer p{
+  font-size: 0.5em;
+}
+
+#end-message-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+#end-message {
+  font-size: 1.5em;
+}
+
